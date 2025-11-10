@@ -560,7 +560,7 @@ print(os.getenv("FAISS_PATH", "./models/faiss_index_tutorai"))
             faiss_path = result.stdout.strip()
             os.environ["FAISS_PATH"] = faiss_path
         else:
-            faiss_path = "./models/faiss_index_tutorai"
+            os.environ["FAISS_PATH"] = "./models/faiss_index_tutorai"
             
         print_step("Verificando banco de dados FAISS...")
         
