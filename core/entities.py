@@ -27,6 +27,7 @@ class Fonte:
     """Representa uma fonte de informação (caminho do arquivo .md original)"""
     
     caminho: str
+    relevancia_score: Optional[float] = None
 
 
 @dataclass
