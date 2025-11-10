@@ -7,6 +7,7 @@ Ponto de entrada principal que permite escolher entre CLI e Streamlit
 import sys
 import argparse
 import os
+from cli_interface import executar_cli
 
 
 def inicializar_rag_service():
@@ -101,13 +102,12 @@ def inicializar_rag_service():
         sys.exit(1)
 
 
-def executar_cli():
+def iniciar_cli():
     """Executa a interface CLI"""
     print("Iniciando interface CLI...\n")
     
     try:
         rag_service = inicializar_rag_service()
-        from cli_interface import executar_cli
         executar_cli(rag_service)
         
     except KeyboardInterrupt:
@@ -180,7 +180,7 @@ LLM_MODEL            Modelo de linguagem
     
     try:
         if args.interface == "cli":
-            executar_cli()
+            iniciar_cli()
         elif args.interface == "streamlit":
             executar_streamlit()
     
