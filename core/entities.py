@@ -35,4 +35,5 @@ class Resposta:
     """Representa uma resposta gerada pelo sistema"""
     
     texto: str
+    confianca: Optional[float] = None
     fontes: List[Fonte] = field(default_factory=list)
