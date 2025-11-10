@@ -20,6 +20,9 @@ class Documento:
     
     conteudo: str
     metadados: dict = field(default_factory=dict)
+    caminho: Optional[str] = None
+    titulo: Optional[str] = None
+    chunks: List[str] = field(default_factory=list)
 
 
 @dataclass
