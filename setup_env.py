@@ -285,7 +285,7 @@ def install_requirements():
     pip_path = get_venv_pip()
     
     try:
-        result = subprocess.run(
+        subprocess.run(
             [pip_path, "install", "-r", "requirements.txt", "--quiet"],
             check=True,
             capture_output=True,
