@@ -13,10 +13,6 @@
 
 TúlioAI é um assistente de estudos inteligente que responde perguntas com base em documentos Markdown usando RAG (Retrieval-Augmented Generation).
 
-> **Nota sobre nomenclatura:** O repositório se chama "TutorAI" (nome técnico/GitHub), mas o produto/aplicação se chama "TúlioAI" (nome de usuário). Esta é uma convenção intencional onde:
-> - **TutorAI** = Nome do repositório e referências técnicas
-> - **TúlioAI** = Nome do produto para usuários finais
-
 ## 🚀 Quick Start
 
 ```bash
