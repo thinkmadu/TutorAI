@@ -2,7 +2,6 @@
 Markdown Loader - Carrega e processa arquivos Markdown
 """
 
-import os
 from pathlib import Path
 from typing import List, Dict, Optional
 import re
