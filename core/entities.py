@@ -4,7 +4,7 @@ Define as estruturas de dados fundamentais do sistema
 """
 
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List
 
 
 @dataclass
