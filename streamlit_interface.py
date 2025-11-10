@@ -60,7 +60,7 @@ def carregar_llm():
             model = AutoModelForCausalLM.from_pretrained(
                 LLM_MODEL,
                 device_map="auto",
-                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+                dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
                 trust_remote_code=True,
                 low_cpu_mem_usage=True
             )
@@ -71,7 +71,6 @@ def carregar_llm():
                 model=model,
                 tokenizer=tokenizer,
                 max_new_tokens=512,
-                temperature=0.1,
                 do_sample=False,
                 eos_token_id=tokenizer.eos_token_id
             )

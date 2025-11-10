@@ -56,7 +56,7 @@ def inicializar_rag_service():
         model = AutoModelForCausalLM.from_pretrained(
             LLM_MODEL,
             device_map="auto",
-            torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+            dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
             trust_remote_code=True,
             low_cpu_mem_usage=True
         )
@@ -66,7 +66,6 @@ def inicializar_rag_service():
             model=model,
             tokenizer=tokenizer,
             max_new_tokens=512,
-            temperature=0.1,
             do_sample=False,
             eos_token_id=tokenizer.eos_token_id
         )
@@ -152,13 +151,13 @@ def main():
         epilog="""
 Exemplos de uso:
 
-  python main.py --interface cli
-  python main.py --interface streamlit
+python main.py --interface cli
+python main.py --interface streamlit
 
 Variaveis de ambiente (opcionais):
-  FAISS_PATH           Caminho para o indice FAISS
-  EMBEDDINGS_MODEL     Modelo de embeddings
-  LLM_MODEL            Modelo de linguagem
+FAISS_PATH           Caminho para o indice FAISS
+EMBEDDINGS_MODEL     Modelo de embeddings
+LLM_MODEL            Modelo de linguagem
         """
     )
     
