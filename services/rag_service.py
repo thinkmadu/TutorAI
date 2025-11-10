@@ -66,7 +66,6 @@ class RAGService:
             Entidade Resposta com texto gerado e fontes
         """
         # 1. Instancia entidade Pergunta
-        pergunta = Pergunta(texto=pergunta_texto)
         
         # 2. Recupera documentos relevantes usando o retriever
         documentos_recuperados = self._retriever.recuperar(pergunta=pergunta_texto, k=4)
