@@ -101,7 +101,7 @@ def create_venv():
         print_success(f"Ambiente virtual criado em '{venv_path}'")
         return True
     except subprocess.CalledProcessError as e:
-        print_error(f"✗ Erro ao criar ambiente virtual: {e.stderr}")
+        print_error(f"Erro ao criar ambiente virtual: {e.stderr}")
         return False
 
 
@@ -189,7 +189,7 @@ GOOGLE_DRIVE_FAISS_FOLDER_ID=
         print_success("Arquivo .env criado com sucesso")
         return True
     except Exception as e:
-        print_error(f"✗ Erro ao criar .env: {e}")
+        print_error(f"Erro ao criar .env: {e}")
         return False
 
 
@@ -237,14 +237,14 @@ except Exception as e:
         )
         
         if result.returncode != 0:
-            print_error(f"✗ Erro ao carregar .env: {result.stderr}")
+            print_error(f"Erro ao carregar .env: {result.stderr}")
             return False
         
         print_success("Variáveis de ambiente carregadas")
         return True
         
     except Exception as e:
-        print_error(f"✗ Erro ao carregar .env: {e}")
+        print_error(f"Erro ao carregar .env: {e}")
         return False
 
 
@@ -276,7 +276,7 @@ def install_requirements():
             req_path.write_text(default_requirements)
             print_success("requirements.txt criado")
         except Exception as e:
-            print_error(f"✗ Erro ao criar requirements.txt: {e}")
+            print_error(f"Erro ao criar requirements.txt: {e}")
             return False
     
     print_step("Instalando dependências (isso pode demorar alguns minutos)...")
@@ -294,7 +294,7 @@ def install_requirements():
         print_success("Dependências instaladas com sucesso")
         return True
     except subprocess.CalledProcessError as e:
-        print_error("✗ Erro ao instalar dependências")
+        print_error("Erro ao instalar dependências")
         print(f"{Colors.FAIL}{e.stderr}{Colors.ENDC}")
         
         # Tenta instalação sem --quiet para ver erros
@@ -420,7 +420,7 @@ except Exception as e:
         print(result.stdout)
         
         if result.returncode != 0:
-            print_error("✗ Erro ao criar banco de teste:")
+            print_error("Erro ao criar banco de teste:")
             print(result.stderr)
             return False
         
@@ -428,7 +428,7 @@ except Exception as e:
         return True
         
     except Exception as e:
-        print_error(f"✗ Erro ao criar banco de teste: {e}")
+        print_error(f"Erro ao criar banco de teste: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -441,7 +441,7 @@ def download_faiss_from_drive():
     drive_folder_id = os.getenv("GOOGLE_DRIVE_FAISS_FOLDER_ID", "")
     
     if not drive_folder_id:
-        print_error("✗ GOOGLE_DRIVE_FAISS_FOLDER_ID não está definido no .env")
+        print_error("GOOGLE_DRIVE_FAISS_FOLDER_ID não está definido no .env")
         print("Por favor, adicione o ID da pasta do Google Drive ao arquivo .env")
         print("Exemplo: GOOGLE_DRIVE_FAISS_FOLDER_ID=1a2b3c4d5e6f7g8h9i0j")
         return False
@@ -501,7 +501,7 @@ except Exception as e:
         print(result.stdout)
         
         if result.returncode != 0:
-            print_error("✗ Erro ao baixar do Google Drive:")
+            print_error("Erro ao baixar do Google Drive:")
             print(result.stderr)
             return False
         
@@ -509,7 +509,7 @@ except Exception as e:
         return True
         
     except Exception as e:
-        print_error(f"✗ Erro ao baixar do Drive: {e}")
+        print_error(f"Erro ao baixar do Drive: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -573,17 +573,17 @@ print(os.getenv("FAISS_PATH", "./models/faiss_index_tutorai"))
             if choice == '1':
                 # Criar banco de teste
                 if not create_test_faiss_from_md():
-                    print_error("✗ Falha ao criar banco de teste")
+                    print_error("Falha ao criar banco de teste")
                     return False
             elif choice == '2':
                 # Baixar do Drive
                 if not download_faiss_from_drive():
-                    print_error("✗ Falha ao baixar banco do Drive")
+                    print_error("Falha ao baixar banco do Drive")
                     return False
             
             # Verifica novamente se o banco foi criado/baixado
             if not check_faiss_exists():
-                print_error("✗ Banco FAISS ainda não está disponível")
+                print_error("Banco FAISS ainda não está disponível")
                 return False
         else:
             print_success("Banco FAISS encontrado!")
@@ -654,14 +654,14 @@ print("\\nO sistema está pronto para uso!")
         print(result.stdout)
         
         if result.returncode != 0:
-            print_error("✗ Erro ao carregar componentes RAG:")
+            print_error("Erro ao carregar componentes RAG:")
             print(result.stderr)
             return False
         
         return True
         
     except Exception as e:
-        print_error(f"✗ Erro ao carregar componentes: {e}")
+        print_error(f"Erro ao carregar componentes: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -699,7 +699,7 @@ def launch_interface(choice):
                 check=True
             )
         except subprocess.CalledProcessError as e:
-            print_error(f"✗ Erro ao executar CLI: {e}")
+            print_error(f"Erro ao executar CLI: {e}")
             return False
         except KeyboardInterrupt:
             print("\n")
@@ -716,7 +716,7 @@ def launch_interface(choice):
                 check=True
             )
         except subprocess.CalledProcessError as e:
-            print_error(f"✗ Erro ao executar Streamlit: {e}")
+            print_error(f"Erro ao executar Streamlit: {e}")
             return False
         except KeyboardInterrupt:
             print("\n")
@@ -738,7 +738,7 @@ def main():
     try:
         # 1. Criar/verificar ambiente virtual
         if not create_venv():
-            print_error("✗ Falha ao criar ambiente virtual")
+            print_error("Falha ao criar ambiente virtual")
             return 1
         
         # 2. Atualizar pip
@@ -746,12 +746,12 @@ def main():
         
         # 3. Criar arquivo .env
         if not create_env_file():
-            print_error("✗ Falha ao criar arquivo .env")
+            print_error("Falha ao criar arquivo .env")
             return 1
         
         # 4. Carregar .env
         if not load_env_file():
-            print_error("✗ Falha ao carregar .env")
+            print_error("Falha ao carregar .env")
             return 1
         
         # 5. Criar diretórios
