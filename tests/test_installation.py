@@ -1,5 +1,9 @@
 """
 Script de teste simples para verificar a instalação
+
+Nota: Este projeto usa duas nomenclaturas:
+- TutorAI: nome do repositório (referências técnicas, imports)
+- TúlioAI: nome do produto (interfaces de usuário)
 """
 
 def test_imports():
