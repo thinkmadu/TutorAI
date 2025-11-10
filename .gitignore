@@ -2,6 +2,7 @@
 venv/
 env/
 .venv/
+ENV/
 
 # Arquivos de cache do Python
 __pycache__/
@@ -9,15 +10,51 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
+*.py[cod]
+*$py.class
 
 # Arquivos de IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+.DS_Store
 
 # Logs
 *.log
+logs/
 
-# Dados sensíveis (se houver)
+# Dados e modelos (grandes demais para Git)
+models/
+data/faiss_index*/
+*.index
+*.pkl
+*.bin
+
+# Dados sensíveis
 .env
+.env.local
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*~
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+
+geados/
